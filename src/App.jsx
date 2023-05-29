@@ -65,7 +65,11 @@ const PlaylistDownloader = () => {
             const { medium } = video.snippet.thumbnails;
             return (
               <VideosContainer key={video.etag}>
-                <img width="120" src={medium.url} />
+                <img
+                  width="120"
+                  src={medium.url}
+                  alt={video.snippet.title.slice(0, 10)}
+                />
                 <p>{inx + 1 + "_" + video.snippet.title}</p>
                 <button onClick={() => handleDownload(video)}>Download</button>
               </VideosContainer>
