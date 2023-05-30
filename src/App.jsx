@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Error, Form, VideosContainer } from "./App.styles";
-// import { google } from "googleapis";
 
 const PlaylistDownloader = () => {
   const [playlistVideos, setPlaylistVideos] = useState([]);
@@ -45,12 +44,13 @@ const PlaylistDownloader = () => {
 
   const handleDownload = async (video) => {
     const { videoId } = video.snippet.resourceId;
-    const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+    const videoUrl = `https://cors.bridged.cc/https://www.youtube.com/watch?v=${videoId}`;
 
     try {
       const response = await axios.get(videoUrl, {
         responseType: "arraybuffer",
       });
+
       const videoBlob = new Blob([response.data], { type: "video/mp4" });
       const downloadLink = document.createElement("a");
       downloadLink.href = URL.createObjectURL(videoBlob);
@@ -86,7 +86,7 @@ const PlaylistDownloader = () => {
               <VideosContainer key={video.etag}>
                 <img
                   width="120"
-                  src={medium.url}
+                  src={medium?.url}
                   alt={video.snippet.title.slice(0, 10)}
                 />
                 <p>{inx + 1 + "_" + video.snippet.title}</p>

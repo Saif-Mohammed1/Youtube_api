@@ -1,3 +1,5 @@
+# check the site from [here](https://strong-cranachan-9d6614.netlify.app/){:target="\_blank" rel="noopener"}
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
