@@ -33,6 +33,7 @@ export const Form = styled.form`
   }
   input[type="submit"] {
     cursor: pointer;
+    padding: 6px;
   }
 `;
 export const Container = styled.div`
@@ -41,6 +42,7 @@ export const Container = styled.div`
   padding: 10px;
   button {
     cursor: pointer;
+    padding: 5px;
   }
 `;
 export const Error = styled.p`

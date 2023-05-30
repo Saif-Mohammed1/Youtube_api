@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { saveAs } from "file-saver";
 import axios from "axios";
 import { Container, Error, Form, VideosContainer } from "./App.styles";
+// import { google } from "googleapis";
 
 const PlaylistDownloader = () => {
   const [playlistVideos, setPlaylistVideos] = useState([]);
@@ -29,6 +29,7 @@ const PlaylistDownloader = () => {
       fetchPlaylist();
     }
   }, [playlistId]);
+  /*
   const handleDownload = async (video) => {
     const { videoId } = video.snippet.resourceId;
     const videoUrl = `https://cors-anywhere.herokuapp.com/https://www.youtube.com/watch?v=${videoId}`;
@@ -37,6 +38,24 @@ const PlaylistDownloader = () => {
       const response = await axios.get(videoUrl, { responseType: "blob" });
       const videoBlob = new Blob([response.data], { type: "video/mp4" });
       saveAs(videoBlob, `${video.snippet.title}.mp4`);
+    } catch (error) {
+      console.error("Error downloading video:", error);
+    }
+  };*/
+
+  const handleDownload = async (video) => {
+    const { videoId } = video.snippet.resourceId;
+    const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+
+    try {
+      const response = await axios.get(videoUrl, {
+        responseType: "arraybuffer",
+      });
+      const videoBlob = new Blob([response.data], { type: "video/mp4" });
+      const downloadLink = document.createElement("a");
+      downloadLink.href = URL.createObjectURL(videoBlob);
+      downloadLink.download = `${video.snippet.title}.mp4`;
+      downloadLink.click();
     } catch (error) {
       console.error("Error downloading video:", error);
     }
@@ -78,13 +97,11 @@ const PlaylistDownloader = () => {
         </Container>
       )}
       {error && error.length > 0 && (
-        <>
-          <div>
-            <Error>
-              oops something goes wrong please make sure the URL is correct{" "}
-            </Error>
-          </div>
-        </>
+        <div>
+          <Error>
+            oops something goes wrong please make sure the URL is correct
+          </Error>
+        </div>
       )}
     </>
   );
