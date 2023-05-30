@@ -1,4 +1,4 @@
-# check the site from [here](https://strong-cranachan-9d6614.netlify.app/){:target="_blank" }
+# check the site from [here](https://strong-cranachan-9d6614.netlify.app/)
 
 # Getting Started with Create React App
 
