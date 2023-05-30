@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Container, Error, Form, VideosContainer } from "./App.styles";
+import { MapContainer, Error, Form, VideosContainer } from "./App.styles";
 
 const PlaylistDownloader = () => {
   const [playlistVideos, setPlaylistVideos] = useState([]);
@@ -73,12 +73,12 @@ const PlaylistDownloader = () => {
         <input
           type="text"
           name="playlistId"
-          placeholder="Enter your playlist"
+          placeholder="https://www.youtube.com/playlist?list=......."
         />
         <input type="submit" value="Download" />
       </Form>
       {playlistId && (
-        <Container>
+        <MapContainer>
           {/* Display the playlist videos */}
           {playlistVideos.map((video, inx) => {
             const { medium } = video.snippet.thumbnails;
@@ -94,7 +94,7 @@ const PlaylistDownloader = () => {
               </VideosContainer>
             );
           })}
-        </Container>
+        </MapContainer>
       )}
       {error && error.length > 0 && (
         <div>

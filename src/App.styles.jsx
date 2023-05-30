@@ -1,18 +1,5 @@
 import styled from "styled-components";
 
-export const VideosContainer = styled.div`
-  display: flex;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  text-align: center;
-  align-items: center;
-  p {
-    width: 66%;
-    text-align: left;
-    line-height: 1.5;
-  }
-  margin: 4px 0;
-`;
 export const Form = styled.form`
   padding: 15px 0;
   display: flex;
@@ -35,14 +22,51 @@ export const Form = styled.form`
     cursor: pointer;
     padding: 6px;
   }
+  @media screen and (max-width: 490px) {
+    flex-direction: column;
+    text-align: center;
+    input[type="text"] {
+      width: 100%;
+    }
+    input[type="submit"] {
+      padding: 7px;
+    }
+  }
 `;
-export const Container = styled.div`
+export const MapContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px;
   button {
     cursor: pointer;
     padding: 5px;
+  }
+`;
+export const VideosContainer = styled.div`
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  p {
+    width: 66%;
+    text-align: left;
+    line-height: 1.5;
+  }
+  margin: 4px 0;
+
+  @media screen and (max-width: 490px) {
+    flex-direction: column;
+    margin-bottom: 10px;
+    p {
+      width: 100%;
+      text-align: center;
+      padding: 11px;
+      margin-bottom: 3px;
+    }
+    img {
+      width: 100%;
+    }
   }
 `;
 export const Error = styled.p`
